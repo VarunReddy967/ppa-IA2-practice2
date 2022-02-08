@@ -1,1 +1,95 @@
+ gcc -g p3original.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x844: file p3original.c, line 37.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p3original.c:37
+37    x=input_number();
+(gdb) s
+input_number () at p3original.c:8
+8   {
+(gdb) n
+10    printf("Enter the number :\n");
+(gdb) n
+Enter the number :
+11    scanf("%d",&n);
+(gdb) n
+4
+12    return n;
+(gdb) n
+13  }
+(gdb) n
+main () at p3original.c:38
+38    y=is_composite(x);
+(gdb) s
+is_composite (n=4) at p3original.c:16
+16    int i,composite=0;
+(gdb) n
+17    for(i=1;i<n;i++)
+(gdb) n
+19        if(n%i==0)
+(gdb) n
+21          composite++;
+(gdb) p i
+$1 = 1
+(gdb) n
+17    for(i=1;i<n;i++)
+(gdb) n
+19        if(n%i==0)
+(gdb) n
+21          composite++;
+(gdb) p i
+$2 = 2
+(gdb) p composite
+$3 = 1
+(gdb) n
+17    for(i=1;i<n;i++)
+(gdb) n
+19        if(n%i==0)
+(gdb) p i
+$4 = 3
+(gdb) p composite
+$5 = 2
+(gdb) n
+17    for(i=1;i<n;i++)
+(gdb) n
+24    return composite;
+(gdb) n
+25  }
+(gdb) n
+main () at p3original.c:39
+39    output(x,y);
+(gdb) s
+output (n=4, composite=2) at p3original.c:28
+28    if(composite>1)
+(gdb) n
+30      printf("%d is composite",n);
+(gdb) p composite
+$6 = 2
+(gdb) n
+33  }
+(gdb) n
+main () at p3original.c:40
+40    return 0;
+(gdb) c
+Continuing.
+4 is composite[Inferior 1 (process 1517) exited normally]
+(gdb) n
